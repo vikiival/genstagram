@@ -50,3 +50,12 @@ export async function cronFeed(channel: any, nextPage: any) {
     return error;
   }
 }
+
+
+export async function getUserByFid(fid: any): Promise<any> {
+  const result = await fetch(
+    `https://client.warpcast.com/v2/user?fid=${fid}`
+  );
+  const res = await result.json();
+  return res;
+}

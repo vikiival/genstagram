@@ -31,6 +31,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const account = mnemonicToAccount(
       process.env.FARCASTER_DEVELOPER_MNEMONIC!
     );
+    // const account = privateKeyToAccount('0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80') 
 
     const deadline = Math.floor(Date.now() / 1000) + 86400; // signature is valid for 1 day
     const signature = await account.signTypedData({
