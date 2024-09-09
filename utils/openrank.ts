@@ -1,16 +1,14 @@
 const BASE_URL = "https://graph.cast.k3l.io"
 
-export async function getFriendsScoreByHandle(handle: string  | string[]): Promise<any> {
+export async function getFriendsScoreByHandle(handle: string  | string[], limit: number = 10): Promise<any> {
   const result = await fetch(
-    `${BASE_URL}/scores/personalized/engagement/handles?k=3&limit=10`,
+    `${BASE_URL}/scores/personalized/engagement/handles?k=3&limit=${limit}`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        handles: Array.isArray(handle) ? handle : [handle],
-      }),
+      body: JSON.stringify(Array.isArray(handle) ? handle : [handle]),
     }
   );
   const res = await result.json();
@@ -26,11 +24,10 @@ export async function getUserScoreByHandle(handle: string  | string[]): Promise<
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        handles: Array.isArray(handle) ? handle : [handle],
-      }),
+      body: JSON.stringify(Array.isArray(handle) ? handle : [handle]),
     }
   );
   const res = await result.json();
+  console.log(res)
   return res.result;
 }
