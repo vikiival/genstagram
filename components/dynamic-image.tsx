@@ -5,31 +5,30 @@ import { Input } from "@/components/ui/input"
 import { Bookmark, Heart, MessageCircle, Send } from "lucide-react"
 import { useState } from "react"
 
-export function DynamicImage({ image, author, text, timestamp, pfp }: {image: string; author: string; text: string, timestamp: string; pfp: string}) {
-  const [imageUrl, setImageUrl] = useState(pfp);
-  const [error, setError] = useState(false);
+export function DynamicImage({ image, author, text, timestamp, pfp }: { image: string; author: string; text: string, timestamp: string; pfp: string }) {
+  const [imageUrl, setImageUrl] = useState(pfp)
+  const [error, setError] = useState(false)
 
   const handleImageError = () => {
-    setError(true);
-    setImageUrl("/placeholder.webp");
-  };
+    setError(true)
+    setImageUrl("/placeholder.webp")
+  }
 
   if (error) {
-    return null;
+    return null
   }
 
   return (
     <Card key={image} className="w-full overflow-hidden">
-      <div className="md:flex">
-        <div className="md:w-1/2">
-          <img
-            alt="Post image"
-            className="aspect-square object-cover w-full"
-            height="600"
-            src={image}
-            onError={handleImageError}
-            width="600"
-          />
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full md:w-1/2">
+        <div className="relative pb-[100%]">
+                    <img
+                      alt={`Post by ${author}`}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      src={image}
+                    />
+                  </div>
         </div>
         <div className="md:w-1/2 flex flex-col">
           <CardHeader className="flex-row items-center gap-4 p-4">
@@ -44,11 +43,6 @@ export function DynamicImage({ image, author, text, timestamp, pfp }: {image: st
               <span className="font-semibold">{author}</span> {text}
             </div>
             <div className="mt-4 space-y-2">
-              {/* {post.comments.map((comment, index) => (
-                <div key={index} className="text-sm">
-                  <span className="font-semibold">{comment.user}</span> {comment.text}
-                </div>
-              ))} */}
             </div>
           </CardContent>
           <CardFooter className="flex flex-col items-start p-4 border-t">
@@ -79,7 +73,7 @@ export function DynamicImage({ image, author, text, timestamp, pfp }: {image: st
         </div>
       </div>
     </Card>
-  ) 
+  )
 
   // if (image.includes("/ipfs")) {
   //   let rawUrl = new URL(image);
@@ -140,4 +134,4 @@ export function DynamicImage({ image, author, text, timestamp, pfp }: {image: st
   //       <p className="font-bold text-gray-500">@{author}</p>
   //     </div>
   //   );
-  }
+}

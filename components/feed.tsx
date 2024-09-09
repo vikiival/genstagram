@@ -5,6 +5,7 @@ import FeedCard from "./feed-card"
 import { Loader2 } from "lucide-react"
 import { Button } from "./ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
 export default function Feed({ channel }: any) {
   const [feed, setFeed]: any = useState([])
@@ -62,12 +63,12 @@ export default function Feed({ channel }: any) {
   }, [channel])
 
   return (
-    <div className="mt-1 flex min-h-screen flex-col items-center justify-start">
-      {loading ? (
-        <Loader2 className="h-16 w-16 animate-spin" />
+    // <div className="mt-1 flex  flex-col items-center justify-start">
+    <div className="min-h-screen container mx-auto px-4 py-8">
+     {loading ? (
+        <Loader2 className=" mt-1 mx-auto h-16 w-16 animate-spin" />
       ) : (
-        <div className="container mx-auto px-4 py-8">
-          <ScrollArea className="h-[calc(80vh-1rem)] w-full max-w-3xl mx-auto">
+          // {/* <ScrollArea className="h-[calc(80vh-1rem)] w-full max-w-3xl mx-auto"> */}
             <div className="flex flex-col space-y-8">
               {feed ? (
                 feed.map((item: any, index: any) => (
@@ -92,8 +93,6 @@ export default function Feed({ channel }: any) {
                   More
                 </Button>
               )}
-            </div>
-          </ScrollArea>
         </div>
       )}
     </div>
