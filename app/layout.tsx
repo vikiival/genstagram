@@ -23,16 +23,16 @@ const fontDisplay = localFont({
 
 
 export const metadata: Metadata = {
-  title: 'Photocaster',
-  description: 'A photographer focused Farcaster client supporting high res images',
+  title: 'genstagram',
+  description: 'Ranked feed of gen-art channel',
   openGraph: {
-    title: 'Photocaster',
-    description: 'A photographer focused Farcaster client supporting high res images',
-    url: 'https://photocaster.xyz',
-    siteName: 'Photocaster',
+    title: 'genstagram',
+    description: 'Ranked feed of gen-art channel',
+    url: 'https://genstagram.koda.art',
+    siteName: 'genstagram',
     images: [
       {
-        url:`https://www.photocaster.xyz/og.png`,
+        url:`https://genstagram.koda.art/og.png`,
         width: 1200,
         height: 630
       }
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Photocaster',
-    description: 'A photographer focused Farcaster client supporting high res images',
-    creator: '@pinatacloud',
-    images: ['https://www.photocaster.xyz/og.png'], // Must be an absolute URL
+    title: 'genstagram',
+    description: 'Ranked feed of gen-art channel',
+    creator: '@koda',
+    images: ['https://www.genstagram.koda.art/og.png'], // Must be an absolute URL
   },
   icons: {
     icon: '/favicon.svg',
