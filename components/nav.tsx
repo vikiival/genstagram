@@ -1,10 +1,9 @@
-import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./theme-toggle";
-import { LoginWindow } from "./login-window";
-import { useFarcasterIdentity } from "@/utils/use-farcaster-identity";
-import { UserRound } from "lucide-react";
-import { ChannelSwitch } from "./channel-change";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { useFarcasterIdentity } from "@/utils/use-farcaster-identity"
+import { Auth } from "./auth"
+import { ChannelSwitch } from "./channel-change"
+import { LoginWindow } from "./login-window"
+import { ThemeToggle } from "./theme-toggle"
 
 export function Nav({ setChannel }: any) {
   const { farcasterUser, loading, startFarcasterSignerProcess, logout } =
@@ -28,12 +27,8 @@ export function Nav({ setChannel }: any) {
         </div>
         <div className="flex gap-4">
           <ChannelSwitch setChannel={setChannel} />
-          <DialogTrigger asChild>
-            <Button variant="outline" size="icon">
-              <UserRound className="h-4 w-4" />
-            </Button>
-          </DialogTrigger>
           <ThemeToggle />
+          <Auth />
         </div>
         <DialogContent className="sm:max-w-[425px] max-w-[375px]">
         <DialogTitle className="DialogTitle">Edit profile</DialogTitle>
@@ -43,6 +38,7 @@ export function Nav({ setChannel }: any) {
             startFarcasterSignerProcess={startFarcasterSignerProcess}
             logout={logout}
           ></LoginWindow>
+          
         </DialogContent>
       </Dialog>
     </div>
