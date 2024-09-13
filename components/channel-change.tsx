@@ -27,11 +27,12 @@ export function ChannelSwitch({ setChannel }: any) {
             key={channel.url}
           onClick={() =>
             setChannel(
-              channel.url,
+              // channel.url
+              channel.name,
             )
           }
         >
-            {channel.name}
+            /{channel.name}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
