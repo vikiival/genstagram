@@ -10,13 +10,16 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { Nav } from "@/components/nav";
+// import People from "@/components/people"
+import RankedFeed from "@/components/ranked-feed"
 
 export default function Page({}: {
   searchParams: Record<string, string>;
 }): JSX.Element {
   const [open, setOpen] = useState(false);
   const [channel, setChannel] = useState(
-    "chain://eip155:8453/erc721:0xe7a43b5942f15fddeb9733fdcc57c6232f1d5aa0",
+    // "chain://eip155:8453/erc721:0xe7a43b5942f15fddeb9733fdcc57c6232f1d5aa0",
+    "gen-art"
   );
 
   const { farcasterUser, loading, startFarcasterSignerProcess, logout } =
@@ -32,7 +35,9 @@ export default function Page({}: {
             +
           </Button>
         </DialogTrigger> */}
-        <Feed channel={channel} setChannel={setChannel} />
+        {/* <Feed channel={channel} setChannel={setChannel} /> */}
+        {/* <People channel={channel} setChannel={setChannel} /> */}
+        <RankedFeed channel={channel} setChannel={setChannel} />
         <DialogContent className="sm:max-w-[425px] max-w-[375px]">
           {farcasterUser?.status === "approved" ? (
             <UploadForm farcasterUser={farcasterUser as FarcasterUser} />
