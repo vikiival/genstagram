@@ -1,34 +1,81 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Bookmark, Heart, MessageCircle, Send } from "lucide-react"
-import { useState } from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Bookmark, Heart, MessageCircle, Send } from "lucide-react";
+import { useEffect, useState } from "react";
 
-export function DynamicImage({ image, author, text, timestamp, pfp }: { image: string; author: string; text: string, timestamp: string; pfp: string }) {
-  const [imageUrl, setImageUrl] = useState(pfp)
-  const [error, setError] = useState(false)
+type FeedCardProps = {
+  image: string;
+  author: string;
+  text: string;
+  timestamp: string;
+  pfp: string;
+  fid?: number;
+  user?: any;
+  score?: number;
+  calculateRank?: boolean;
+};
+
+export function DynamicImage(
+  { image, author, text, timestamp, pfp, user, calculateRank, fid }: FeedCardProps,
+) {
+  const [imageUrl, setImageUrl] = useState(pfp);
+  const [error, setError] = useState(false);
+
+  const [rank, setRank] = useState<any>(0);
+  const [top, setTop] = useState<number>(0);
 
   const handleImageError = () => {
-    setError(true)
-    setImageUrl("/placeholder.webp")
-  }
+    setError(true);
+    setImageUrl("/placeholder.webp");
+  };
 
   if (error) {
-    return null
+    return null;
   }
+
+  async function fetchRank(handle: string) {
+    try {
+      if (!handle) {
+        return;
+      }
+      const feedData = await fetch(`/api/rank?user=${handle}`);
+      const ranks = await feedData.json();
+      console.log(ranks);
+      const scoring = ranks.at(0);
+      if (scoring) {
+        setRank(scoring.rank);
+        setTop(100 - Number(scoring.percentile));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    if (calculateRank && user.username) {
+      fetchRank(user.username);
+    }
+  }, [calculateRank, user.username]);
 
   return (
     <Card key={image} className="w-full overflow-hidden">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-1/2">
-        <div className="relative pb-[100%]">
-                    <img
-                      alt={`Post by ${author}`}
-                      className="absolute inset-0 h-full w-full object-cover"
-                      src={image}
-                    />
-                  </div>
+          <div className="relative pb-[100%]">
+            <img
+              alt={`Post by ${author}`}
+              className="absolute inset-0 h-full w-full object-cover"
+              src={image}
+              onError={handleImageError}
+            />
+          </div>
         </div>
         <div className="md:w-1/2 flex flex-col">
           <CardHeader className="flex-row items-center gap-4 p-4">
@@ -36,7 +83,11 @@ export function DynamicImage({ image, author, text, timestamp, pfp }: { image: s
               <AvatarImage alt={author} src={imageUrl} />
               <AvatarFallback>{author}</AvatarFallback>
             </Avatar>
-            <div className="font-semibold">{author}</div>
+            <div className="font-semibold">{author}
+              {rank ? (
+                <span className="text-gray-500"> (#{rank})</span>
+              ) : null}
+            </div>
           </CardHeader>
           <CardContent className="p-4 flex-grow overflow-auto">
             <div className="text-sm">
@@ -64,7 +115,25 @@ export function DynamicImage({ image, author, text, timestamp, pfp }: { image: s
                 <span className="sr-only">Save</span>
               </Button>
             </div>
-            <div className="mt-2 text-sm font-semibold">0 likes</div>
+            {user
+              ? (
+                <>
+                  <div className="mt-2 text-sm font-semibold">
+                    {user.followerCount} followers
+                  </div>
+                  <div className="mt-2 text-sm font-semibold">
+                    {user.followingCount} following
+                  </div>
+                </>
+              )
+              : null}
+                        {top
+              ? (
+                <div className="mt-2 text-sm font-semibold">
+                  {top} % of Farcaster users
+                </div>
+              )
+              : null}
             <div className="mt-4 flex w-full items-center gap-2">
               <Input placeholder="Add a comment..." className="flex-grow" />
               <Button size="sm">Post</Button>
@@ -73,7 +142,7 @@ export function DynamicImage({ image, author, text, timestamp, pfp }: { image: s
         </div>
       </div>
     </Card>
-  )
+  );
 
   // if (image.includes("/ipfs")) {
   //   let rawUrl = new URL(image);
