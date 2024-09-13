@@ -56,6 +56,35 @@ export async function getUserByFid(fid: any): Promise<any> {
   const result = await fetch(
     `https://client.warpcast.com/v2/user?fid=${fid}`
   );
+  if (result.ok) {
+    const res = await result.json();
+    return res.result?.user;
+  }
+  
+  return null;
+}
+
+export async function getFollowersByChannel(channel: any, nextPage: any): Promise<any> {
+  const result = await fetch(
+    `https://client.warpcast.com/v2/channel-followers?channelKey=${channel}&limit=25` + (nextPage ? `&cursor=${nextPage}` : "")
+  );
   const res = await result.json();
-  return res;
+  console.log(JSON.stringify(res, null, 2))
+  const { users } =  res.result;
+  const pageToken = res.next.cursor
+  // return id, username, displayName, pfp, bio, location, followerCount, followingCount
+  return users.map((user: any) => {
+    return {
+      id: user.fid,
+      fid: user.username,
+      username: user.username,
+      displayName: user.displayName,
+      pfp: user.pfp.url,
+      bio: user.profile.bio.text,
+      location: user.profile.location.description,
+      followerCount: user.followerCount,
+      followingCount: user.followingCount,
+      pageToken: pageToken,
+    }
+  })
 }
