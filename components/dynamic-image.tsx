@@ -65,7 +65,7 @@ export function DynamicImage(
   }, [calculateRank, user.username]);
 
   return (
-    <Card key={image} className="w-full max-w-2xl overflow-hidden">
+    <Card key={image} className="w-full max-w-3xl overflow-hidden">
       <div className="flex flex-col md:flex-row">
         <div className="w-full sm:w-1/2">
           <div className="relative pb-[100%]">
