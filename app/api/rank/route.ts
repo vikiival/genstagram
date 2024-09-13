@@ -12,8 +12,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const rank = await getUserScoreByHandle(handle);
     return NextResponse.json(rank);
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({ error: error });
+    console.error(error);
+    return NextResponse.json([]);
   }
 }
 
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return NextResponse.json(casts);
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ error: error });
+    return NextResponse.json([]);
   }
 }
 
