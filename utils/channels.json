@@ -1,14 +1,14 @@
 [
   {
-   "name": "/gen-art",
+   "name": "gen-art",
     "url": "chain://eip155:8453/erc721:0xe7a43b5942f15fddeb9733fdcc57c6232f1d5aa0"
   },
   {
-    "name": "/travel",
+    "name": "travel",
     "url": "chain://eip155:7777777/erc721:0x917ef0a90d63030e6aa37d51d7e6ece440ace537"
   },
   {
-    "name": "/koda",
+    "name": "koda",
     "url": "https://warpcast.com/~/channel/koda"
   }
 ]
