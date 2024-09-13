@@ -65,9 +65,9 @@ export function DynamicImage(
   }, [calculateRank, user.username]);
 
   return (
-    <Card key={image} className="w-full overflow-hidden">
+    <Card key={image} className="w-full max-w-2xl overflow-hidden">
       <div className="flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2">
+        <div className="w-full sm:w-1/2">
           <div className="relative pb-[100%]">
             <img
               alt={`Post by ${author}`}
@@ -77,7 +77,7 @@ export function DynamicImage(
             />
           </div>
         </div>
-        <div className="md:w-1/2 flex flex-col">
+        <div className="sm:w-1/2 flex flex-col">
           <CardHeader className="flex-row items-center gap-4 p-4">
             <Avatar>
               <AvatarImage alt={author} src={imageUrl} />
@@ -91,7 +91,8 @@ export function DynamicImage(
           </CardHeader>
           <CardContent className="p-4 flex-grow overflow-auto">
             <div className="text-sm">
-              <span className="font-semibold">{author}</span> {text}
+              {/* <span className="font-semibold">{author}</span>  */}
+              {text}
             </div>
             <div className="mt-4 space-y-2">
             </div>
@@ -134,10 +135,10 @@ export function DynamicImage(
                 </div>
               )
               : null}
-            <div className="mt-4 flex w-full items-center gap-2">
+            {/* <div className="mt-4 flex w-full items-center gap-2">
               <Input placeholder="Add a comment..." className="flex-grow" />
               <Button size="sm">Post</Button>
-            </div>
+            </div> */}
           </CardFooter>
         </div>
       </div>
