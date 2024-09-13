@@ -69,7 +69,7 @@ export default function Feed({ channel }: any) {
         <Loader2 className=" mt-1 mx-auto h-16 w-16 animate-spin" />
       ) : (
           // {/* <ScrollArea className="h-[calc(80vh-1rem)] w-full max-w-3xl mx-auto"> */}
-            <div className="flex flex-col space-y-8">
+            <div className="flex flex-col space-y-8 items-center">
               {feed ? (
                 feed.map((item: any, index: any) => (
                   <FeedCard
