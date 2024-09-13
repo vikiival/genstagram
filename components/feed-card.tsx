@@ -1,10 +1,22 @@
 import { Dialog } from "./ui/dialog";
 import { DynamicImage } from "./dynamic-image";
 
-export default function FeedCard({ image, author, text, timestamp, pfp }: {image: string; author: string; text: string, timestamp: string; pfp: string}) {
+type FeedCardProps = {
+  image: string;
+  author: string;
+  text: string;
+  timestamp: string;
+  pfp: string;
+  fid?: number;
+  user?: any
+  score?: number
+  calculateRank?: boolean;
+};
+
+export default function FeedCard(props: FeedCardProps) {
   return (
     <Dialog>
-      <DynamicImage image={image} author={author} text={text} timestamp={timestamp} pfp={pfp}  />
+      <DynamicImage {...props} />
     </Dialog>
   );
 }
