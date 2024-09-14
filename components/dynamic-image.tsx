@@ -99,19 +99,19 @@ export function DynamicImage(
           </CardContent>
           <CardFooter className="flex flex-col items-start p-4 border-t">
             <div className="flex items-center gap-4 w-full">
-              <Button size="icon" variant="ghost">
+              <Button disabled size="icon" variant="ghost">
                 <Heart className="h-4 w-4" />
                 <span className="sr-only">Like</span>
               </Button>
-              <Button size="icon" variant="ghost">
+              <Button disabled size="icon" variant="ghost">
                 <MessageCircle className="h-4 w-4" />
                 <span className="sr-only">Comment</span>
               </Button>
-              <Button size="icon" variant="ghost">
+              <Button disabled size="icon" variant="ghost">
                 <Send className="h-4 w-4" />
                 <span className="sr-only">Share</span>
               </Button>
-              <Button size="icon" variant="ghost" className="ml-auto">
+              <Button disabled size="icon" variant="ghost" className="ml-auto">
                 <Bookmark className="h-4 w-4" />
                 <span className="sr-only">Save</span>
               </Button>
