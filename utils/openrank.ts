@@ -48,7 +48,7 @@ export async function getFeed(channel: string, offset: number = 0): Promise<any>
   console.log(res)
   return Promise.all(res.result.map(async (c: any) => ({
     ...c,
-    pageToken: offset + LIMIT,
+    pageToken: Number(offset) + LIMIT,
     user: await getUserByFid(c.fid),
     embeds: JSON.parse(c.embeds).filter((e: any) => e.url?.includes("imagedelivery.net")) //.map((e: any) => e.url) //.filter((e: any) => e.includes("imagedelivery.net")),
     
