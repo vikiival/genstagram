@@ -3,6 +3,7 @@ import {
   NobleEd25519Signer,
   FarcasterNetwork,
   makeCastAdd,
+  type CastAddBody,
 } from "@farcaster/core";
 import { hexToBytes } from "@noble/hashes/utils";
 import { NextRequest, NextResponse } from "next/server";
@@ -31,13 +32,14 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const privateKeyBytes = hexToBytes(SIGNER.slice(2));
     const ed25519Signer = new NobleEd25519Signer(privateKeyBytes);
 
-    const castBody = {
+    const castBody: CastAddBody = {
       text: message,
       embeds: [{ url: link }],
       embedsDeprecated: [],
       mentions: [],
       mentionsPositions: [],
       parentUrl: parentUrl,
+      type: 0,
     };
 
     const castAddReq: any = await makeCastAdd(
