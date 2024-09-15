@@ -77,7 +77,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
-            {/* <Analytics /> */}
+            <Analytics />
           </ThemeProvider>
       </body>
     </html>
