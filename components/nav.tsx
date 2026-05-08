@@ -13,13 +13,13 @@ export function Nav({ setChannel }: any) {
     <div className="flex justify-between w-full items-center sm:w-full max-w-3xl mt-6">
       <Dialog>
         <div className="flex flex-col">
-          <h1 className="font-display sm:text-4xl text-3xl">genstagram</h1>
+          <h1 className="font-display sm:text-4xl text-3xl">fama</h1>
           <p>
             powered by{" "}
             <a
               href="https://koda.art"
               className="underline text-md sm:text-lg"
-              target="_blank"
+              target="_blank" rel="noopener"
             >
               koda.art
             </a>
