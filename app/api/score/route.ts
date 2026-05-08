@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getFriendsScoreByHandle } from "@/utils/openrank";
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   try {
     const handle = req.nextUrl.searchParams.get("user");
 
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
 }
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json() as string[];
     const casts = await getFriendsScoreByHandle(body);
@@ -27,4 +27,3 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return NextResponse.json({ error: error });
   }
 }
-

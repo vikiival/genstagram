@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cronFeed } from "@/utils/fc";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const casts = await cronFeed(body.channel, body.nextPage);
