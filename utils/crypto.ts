@@ -21,7 +21,7 @@ export async function createKeypair(): Promise<{
   privateKeyBytes: Uint8Array;
 }> {
   // store this securely!
-  const privateKeyBytes = ed.utils.randomPrivateKey();
+  const privateKeyBytes = ed.utils.randomSecretKey();
   const publicKeyBytes = await ed.getPublicKeyAsync(privateKeyBytes);
 
   return {

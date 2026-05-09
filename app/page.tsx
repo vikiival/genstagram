@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import UploadForm from "@/components/upload-form";
 import Feed from "@/components/feed";
 import { LoginWindow } from "@/components/login-window";
@@ -15,7 +15,7 @@ import RankedFeed from "@/components/ranked-feed"
 
 export default function Page({}: {
   searchParams: Record<string, string>;
-}): JSX.Element {
+}): ReactElement {
   const [open, setOpen] = useState(false);
   const [channel, setChannel] = useState(
     // "chain://eip155:8453/erc721:0xe7a43b5942f15fddeb9733fdcc57c6232f1d5aa0",

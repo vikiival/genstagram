@@ -23,16 +23,16 @@ const fontDisplay = localFont({
 
 
 export const metadata: Metadata = {
-  title: 'genstagram',
+  title: 'fama',
   description: 'Ranked feed of gen-art channel',
   openGraph: {
-    title: 'genstagram',
+    title: 'fama',
     description: 'Ranked feed of gen-art channel',
-    url: 'https://genstagram.koda.art',
-    siteName: 'genstagram',
+    url: 'https://famagram.vercel.app',
+    siteName: 'fama',
     images: [
       {
-        url:`https://genstagram.koda.art/og.png`,
+        url:`https://famagram.vercel.app/og.png`,
         width: 1200,
         height: 630
       }
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'genstagram',
+    title: 'fama',
     description: 'Ranked feed of gen-art channel',
     creator: '@koda',
-    images: ['https://www.genstagram.koda.art/og.png'], // Must be an absolute URL
+    images: ['https://www.famagram.vercel.app/og.png'], // Must be an absolute URL
   },
   icons: {
     icon: '/favicon.svg',

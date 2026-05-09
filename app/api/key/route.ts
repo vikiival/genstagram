@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 const { v4: uuidv4 } = require("uuid");
 const pinataJWT = process.env.PINATA_JWT;
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   try {
     const uuid = uuidv4();
     const body = JSON.stringify({
@@ -41,7 +41,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
 }
 
-export async function PUT(req: NextRequest, response: NextResponse) {
+export async function PUT(req: NextRequest) {
   try {
     const body = await req.json()
     const keyData = JSON.stringify(body)

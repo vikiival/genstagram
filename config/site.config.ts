@@ -1,8 +1,8 @@
 const siteMeta = {
-  title: "genstagram",
+  title: "fama",
   description: "Ranked feed of gen-art channel",
   domain: "www.dietcast.xyz",
-  websiteUrl: "https://genstagram.koda.art",
+  websiteUrl: "https://famagram.vercel.app",
   channelUrl: "https://warpcast.com/~/channel/koda",
   channelName: "koda",
   logo: "/logo.svg",
